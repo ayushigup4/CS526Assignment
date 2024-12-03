@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head id="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <title> @ViewBag.Title </title>
+
+    @{
+        var SiteCss = ViewBag.isAda ? "site_ADA.css" : "site.css";
+    }
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/@SiteCss" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ImageSharingWithCloud.styles.css" asp-append-version="true" />
+
+    <!-- The default is to have input validation done on the client side, using these libraries. -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+s</head>
+
+<body class="twoColumnHdrFtr">
+    <div id="container">
+        <header id="header">
+            <h1><img alt="[Jive Talkin' Choirboy]" src="~/images/jive-talkin-choirboy.png" /></h1>
+        </header>
+
+        <nav id="nav">
+            <ul>
+                <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Password">Password</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Manage">Users</a></li>
+                <li><a asp-area="" asp-controller="Images" asp-action="Upload">Upload</a></li>
+                <li><a asp-area="" asp-controller="Images" asp-action="ListAll">List All</a></li>
+                <li><a asp-area="" asp-controller="Images" asp-action="ListByUser">List by User</a></li>
+                <li><a asp-area="" asp-controller="Images" asp-action="ImageViews">Image Views</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <aside id="sidebar">
+            <h1>Links</h1>
+            <p><a href="http://www.dominicduggan.org">My home page</a></p>
+            <p><a href="http://www.stevens.edu">Stevens home page</a></p>
+        </aside>
+
+        <!-- <partial name="_CookieConsentPartial" /> -->
+
+        <article id="content">
+            @RenderBody()
+        </article>
+        <footer id="footer">
+            <p>&copy; @DateTime.Now.Year Ayushi Gupta</p>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

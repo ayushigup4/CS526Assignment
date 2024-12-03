@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@model ImageSharingWithCloud.Models.ViewModels.ImageViewsModel
+
+<form method="get" asp-action="ImageViewsList" asp-controller="Images">
+
+    <fieldset>
+        <legend> View Logs</legend>
+        <p>
+            Logs for today only: 
+            <input asp-for="Today" /><span asp-validation-for="Today" />
+        </p>
+        <p>
+            <input type="submit" value="Views" />
+
+        </p>
+    </fieldset>
+
+    <p>@ViewBag.Message</p>
+    <p><div class="text-danger" asp-validation-summary="ModelOnly"></div></p>
+
+</form>

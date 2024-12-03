@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ImageSharingWithCloud.Models.Image>
+
+@{
+    ViewBag.Title = "All Images";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <tr>
+        <th>Caption</th>
+        <th>Uploader</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var image in Model)
+    {
+        <tr>
+            <td>
+                @image.Caption
+            </td>
+            <td>
+                @image.UserName
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-userid="@image.UserId" asp-route-id="@image.Id">Details</a>
+
+                @if (ViewBag.UserId.Equals(image.UserId))
+                {
+                    <text>
+                        <!-- TODO add Edit and Delete links -->
+
+                    </text>
+                }
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,38 @@
+﻿@model Azure.AsyncPageable<LogEntry>
+
+@{
+    ViewBag.Title = "Image Viewing Activity";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="gridTable">
+    <tr>
+        <th>Image ID</th>
+        <th>Caption</th>
+        <th>User</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+
+    @await foreach (var entry in Model)
+    {
+        <tr>
+            <td>
+                @entry.ImageId
+            </td>
+            <td>
+                @entry.Caption
+            </td>
+            <td>
+                @entry.Username
+            </td>
+            <td>
+                @string.Format("{0:d}", entry.EntryDate)
+            </td>
+            <td>
+                @string.Format("{0:t}", entry.EntryDate)
+            </td>
+        </tr>
+    }
+</table>

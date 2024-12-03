@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Logout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@model  ImageSharingWithCloud.Models.ViewModels.LogoutModel
+
+<form method="post" asp-action="DoLogout" asp-controller="Account">
+
+    <fieldset>
+        <p>Currently logged in as @Model.UserName.</p>
+        <p>
+            <input type="submit" value="Logout" />
+        </p>
+    </fieldset>
+
+    <p>@ViewBag.Message</p>
+    <p><div class="text-danger" asp-validation-summary="ModelOnly"></div></p>
+
+</form>
